@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,10 +26,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-*udp&($98(!jf7g2rf-36hd^!franf78q!1n*3t9uqhf)5u*4*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['web-production-0429.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://web-production-0429.up.railway.app']
+ALLOWED_HOSTS = ['*']
+# CSRF_TRUSTED_ORIGINS = ['https://web-production-0429.up.railway.app']
 
 # Application definition
 
@@ -76,18 +77,9 @@ WSGI_APPLICATION = 'my_portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'NO4rf74ryNdlU4OAcPZR',
-        'HOST': 'containers-us-west-62.railway.app',
-        'PORT': '6387',
-    }
+    'default': dj_database_url.parse('postgres://carltona_user:3jBXi86W7XEUzIYp1Qh3iEJ2oEf70CB0@dpg-cfen0sen6mpu0ue9g65g-a.oregon-postgres.render.com/carltona')
 }
-
 
 # DATABASES = {
 #     'default': {
@@ -136,8 +128,6 @@ STATIC_URL = '/static/'
 
 # Add these new lines
 STATICFILES_DIRS = [BASE_DIR / 'static']
-
-STATIC_ROOT = [BASE_DIR / 'staticfiles']
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
